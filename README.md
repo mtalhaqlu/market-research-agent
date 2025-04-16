@@ -32,3 +32,14 @@ cd market-research-agent
 touch .env                # Add your GROQ_API_KEY inside
 pip install -r requirements.txt
 uvicorn server:app
+
+## Making Requests
+
+```bash
+curl -X POST http://127.0.0.1:8000/start \
+  -H "Content-Type: application/json" \
+  -d '{
+    "session_id": "129",
+    "query": "What is the market for electric vehicles in Germany?"
+  }'
+
