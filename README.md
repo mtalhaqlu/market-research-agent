@@ -33,13 +33,21 @@ touch .env                # Add your GROQ_API_KEY inside
 pip install -r requirements.txt
 uvicorn server:app
 
-## Making Requests
+## Starting Conversation
 
-```bash
 curl -X POST http://127.0.0.1:8000/start \
   -H "Content-Type: application/json" \
   -d '{
     "session_id": "129",
     "query": "What is the market for electric vehicles in Germany?"
+  }'
+
+## Subsequent Reply from User if inquired by the Chat Agent
+
+curl -X POST http://127.0.0.1:8000/reply \
+  -H "Content-Type: application/json" \
+  -d '{
+    "session_id": "129",
+    "message": "Focus on market size and growth projections for the next 5 years and assume remaining things"
   }'
 
