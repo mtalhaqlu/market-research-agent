@@ -42,12 +42,18 @@ curl -X POST http://127.0.0.1:8000/start \
     "query": "What is the market for electric vehicles in Germany?"
   }'
 
-## Subsequent Reply from User if inquired by the Chat Agent
+## Subsequent Reply Requests from User if inquired by the Chat Agent
 
 curl -X POST http://127.0.0.1:8000/reply \
   -H "Content-Type: application/json" \
   -d '{
     "session_id": "129",
-    "message": "Focus on market size and growth projections for the next 5 years and assume remaining things"
+    "message": "Focus on market size and growth projections for the next 5 years"
   }'
 
+curl -X POST http://127.0.0.1:8000/reply \
+  -H "Content-Type: application/json" \
+  -d '{
+    "session_id": "129",
+    "message": "Give Comparative Analysis also of different manufacturers and assume remaining things"
+  }'
