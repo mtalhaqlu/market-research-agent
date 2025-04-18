@@ -61,7 +61,11 @@ def generate_plan(clarified_query: str) -> str:
         HumanMessage(content=clarified_query)
     ]
     response = model.invoke(messages)
-    return response.content.split("</think>\n", 1)[1]
+
+    if "</think>" in response.content:
+        return response.content.split("</think>", 1)[1].strip()
+    else:
+        return response.content.strip()
 
 def execute_plan(steps: str) -> str:
     """Executes the steps provided by the planner agent."""
